@@ -123,7 +123,8 @@ if __name__ == '__main__':
     """Test"""
 
     import os
-    from hellonlp.glove.corpus import get_wiki_corpus
+    from gensim.test.utils import datapath
+    from gensim.corpora import WikiCorpus
 
     # Get file path
     script_path = os.path.abspath(__file__)
@@ -131,7 +132,7 @@ if __name__ == '__main__':
     file_name = 'enwiki-latest-pages-articles1.xml-p10p30302.bz2'
     file_path = os.path.join(data_dir, file_name)
 
-    wiki_corpus = get_wiki_corpus(file_path)
+    wiki_corpus = WikiCorpus(datapath(file_path))
 
     def get_text_iterator(corpus=wiki_corpus):
         return corpus.get_texts()
